@@ -24,9 +24,9 @@ class StoreTemaRequest extends FormRequest
     public function rules()
     {
         return [
-            'titulo'=>'required|string',
-            'anyo'=>'required|numeric',
-            'duracion'=>'required|numeric',
+            'titulo' => 'required|string',
+            'anyo' => 'required|digits:4',
+            'duracion' => 'required|date_format:"H:i:s"',
         ];
     }
 }

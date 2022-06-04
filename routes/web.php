@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AlbumController;
 use App\Http\Controllers\ArtistaController;
+use App\Http\Controllers\TemaController;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -27,8 +28,12 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('albumes',[AlbumController::class,'index'])->name('albumes.index');
+Route::get('albumes',[AlbumController::class,'index'])->middleware(['auth'])->name('albumes.index');
 
-Route::get('artistas',[ArtistaController::class,'index']);
+Route::get('artistas',[ArtistaController::class,'index'])->middleware(['auth']);
 
-Route::resource('/albumes',AlbumController::class);
+Route::resource('albumes',AlbumController::class)->parameters(['albumes'=>'album'])->middleware(['auth']);
+
+Route::resource('temas',TemaController::class)->middleware(['auth']);
+
+

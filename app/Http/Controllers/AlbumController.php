@@ -16,10 +16,10 @@ class AlbumController extends Controller
     public function index()
     {
 
-        $albumes = Album::all();
+        $albumes = Album::ordenar('anyo')->get();
 
        // return($albumes);
-        return view('albumes.index',['albumes'=>Album::all()]);
+        return view('albumes.index',['albumes'=>$albumes]);
     }
 
     /**

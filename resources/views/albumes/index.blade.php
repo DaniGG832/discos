@@ -1,12 +1,4 @@
-{{$albumes}}
-<br>
 
-@foreach ($albumes as $album)
-<br>
- titulo:{{$album->titulo}}
- <br>
- año: {{$album->anyo}}
-@endforeach
 
 
 <x-app-layout>

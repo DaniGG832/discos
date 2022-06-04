@@ -1,8 +1,10 @@
 <?php
 
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Query\Grammars\Grammar;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+
 
 return new class extends Migration
 {
@@ -13,13 +15,15 @@ return new class extends Migration
      */
     public function up()
     {
+        Grammar::macro('typeInterval', function () {
+            return 'interval';
+        });
+
         Schema::create('temas', function (Blueprint $table) {
             $table->id();
             $table->string('titulo');
             $table->year('anyo');
-            $table->decimal('duracion',4,2);
-
-
+            $table->addColumn('interval', 'duracion');
             $table->timestamps();
         });
     }

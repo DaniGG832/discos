@@ -26,4 +26,9 @@ class Album extends Model
 
         return $this->belongsToMany(Tema::class);
     }
+
+    public function scopeOrdenar($query,$x)
+    {
+        return $query->orderBy($x,'desc');
+    }
 }

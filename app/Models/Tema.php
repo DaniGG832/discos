@@ -9,6 +9,16 @@ class Tema extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'titulo',
+        'anyo',
+        'duracion',
+    ];
+
+    protected $cast = [
+        'duracion' => 'interval',
+    ];
+
     public function albumes(){
         return $this->belongsToMany(Album::class);
     }

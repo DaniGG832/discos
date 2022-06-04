@@ -15,7 +15,9 @@ class TemaController extends Controller
      */
     public function index()
     {
-        //
+        $temas = Tema::all();
+        return view('temas.index',compact('temas'));
+
     }
 
     /**
@@ -25,7 +27,7 @@ class TemaController extends Controller
      */
     public function create()
     {
-        //
+        return view('temas.create',['tema'=>new Tema()]);
     }
 
     /**
@@ -36,7 +38,16 @@ class TemaController extends Controller
      */
     public function store(StoreTemaRequest $request)
     {
-        //
+        //dd($request);
+
+        $tema = new Tema($request->validated());
+
+        $tema->save();
+
+        
+        return redirect()->route('temas.index')->with('success','tema creado correctamente');
+        
+
     }
 
     /**
